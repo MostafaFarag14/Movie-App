@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/Movie-App/static/css/main.5a38d4ea.chunk.css",
+    "main.js": "/Movie-App/static/js/main.db67ad0c.chunk.js",
+    "main.js.map": "/Movie-App/static/js/main.db67ad0c.chunk.js.map",
+    "runtime-main.js": "/Movie-App/static/js/runtime-main.8e34a323.js",
+    "runtime-main.js.map": "/Movie-App/static/js/runtime-main.8e34a323.js.map",
+    "static/js/2.1c88cbdf.chunk.js": "/Movie-App/static/js/2.1c88cbdf.chunk.js",
+    "static/js/2.1c88cbdf.chunk.js.map": "/Movie-App/static/js/2.1c88cbdf.chunk.js.map",
+    "index.html": "/Movie-App/index.html",
+    "precache-manifest.88bba39fcec3c3f64cdedde0c5b0191b.js": "/Movie-App/precache-manifest.88bba39fcec3c3f64cdedde0c5b0191b.js",
+    "service-worker.js": "/Movie-App/service-worker.js",
+    "static/css/main.5a38d4ea.chunk.css.map": "/Movie-App/static/css/main.5a38d4ea.chunk.css.map",
+    "static/js/2.1c88cbdf.chunk.js.LICENSE.txt": "/Movie-App/static/js/2.1c88cbdf.chunk.js.LICENSE.txt",
+    "static/media/logo.svg": "/Movie-App/static/media/logo.5d5d9eef.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.8e34a323.js",
+    "static/js/2.1c88cbdf.chunk.js",
+    "static/css/main.5a38d4ea.chunk.css",
+    "static/js/main.db67ad0c.chunk.js"
+  ]
+}
