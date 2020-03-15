@@ -2,7 +2,14 @@ import React from 'react'
 
 const logo = './assets/img/Capture.PNG'
 const search = './assets/img/icons8-search.svg'
+
 export class Header extends React.Component {
+
+  handleSubmit = (e) => {
+    let searchInput = document.getElementById('search')
+    console.log(searchInput.value)
+    this.props.search(searchInput.value)
+  }
   render() {
     return (
       <>
@@ -18,7 +25,7 @@ export class Header extends React.Component {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav mr-auto">
               <li className="nav-item active">
-                <a className="nav-link" href="#">BUNDLES<span className="sr-only">(current)</span></a>
+                <a className="nav-link" href="./index.html">BUNDLES<span className="sr-only">(current)</span></a>
               </li>
               <li className="nav-item">
                 <a className="nav-link" href="#">CHIOCE</a>
@@ -38,8 +45,8 @@ export class Header extends React.Component {
               </li>
             </ul>
             <form className="form-inline my-2 my-lg-0">
-              <input className="form-control mr-sm-2 bg-dark border-0" type="search" placeholder="Search" aria-label="Search" />
-              <button className="btn btn-outline-secondary my-2 my-sm-0 border-0" type="submit"><img src={search}/></button>
+              <input id="search" className="form-control mr-sm-2 bg-dark border-0 text-white" type="search" placeholder="Search" aria-label="Search" name="search" onChange={this.handleSubmit}/>
+              <button className="btn btn-outline-secondary my-2 my-sm-0 border-0" type="button" onClick={this.handleSubmit}><img src={search}/></button>
             </form>
           </div>
           </div>

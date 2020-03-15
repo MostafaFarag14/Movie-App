@@ -4,16 +4,12 @@ const apiKey = '2b2be35c63bf3fe9e48a5ed70ef9a13d'
 export class MovieList extends React.Component {
   constructor() {
     super()
+    this.urlBuilder()
     this.state = {
       base_url: '',
-      img_size: '',
-      img_path: '/kqjL17yufvn9OVLyXYpvtyrFfak.jpg',
-      trendingList: [
-
-      ]
+      img_size: ''
     }
   }
-
   urlBuilder = () => {
     fetch(`https://api.themoviedb.org/3/configuration?api_key=${apiKey}`)
       .then(resp => resp.json())
@@ -23,37 +19,29 @@ export class MovieList extends React.Component {
       })
   }
 
-  getTrending = (media_type, time_window) => {
-    fetch(`https://api.themoviedb.org/3/trending/${media_type}/${time_window}?api_key=${apiKey}`)
-      .then(resp => resp.json())
-      .then(jsonresp => {
-        this.setState({ trendingList: jsonresp.results })
-        console.log(this.state.trendingList)
-      })
-  }
-  componentWillMount() {
-    this.urlBuilder()
-    this.getTrending('movie', 'day')
-  }
-
   render() {
-
     return (
       <div>
-        <h1>place</h1>
-        {/* <img src={`${this.state.base_url}${this.state.img_size}${this.state.img_path}`} /> */}
-        <div className="container">
+        {console.log(this.props.trendingList)}
         <div className="row">
-          {this.state.trendingList.map(movie => {
-            return (
-                <div className="col-4 my-4">
-                  <div className="card border border-dark  rounded-lg">
-                    <img width="" height="" src={`${this.state.base_url}${this.state.img_size}${movie.backdrop_path}`} className="card-img-top  rounded-sm" />
-                  </div>
+          {this.props.trendingList.map((movie, index) => {
+            if (movie.backdrop_path) {
+              return (
+                <div key={index} className="col-md-6 my-4 h-100">
+                  <a className="card border border-dark rounded-lg text-white" href="#">
+                    <img width="" height="" src={`${this.state.base_url}${this.state.img_size}${movie.backdrop_path}`} className="card-img-top" />
+                    <div className="card-footer px-4 d-flex justify-content-between align-items-center">
+                      <span className="col-10 text-truncate">{movie.overview}</span>
+                      <div className=""><label className="">{movie.release_date}</label></div>
+                    </div>
+
+                  </a>
                 </div>
-            )
+              )
+            }
+
           })}
-          </div>
+
         </div>
 
       </div>
