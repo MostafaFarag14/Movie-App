@@ -1,0 +1,55 @@
+.movieTitle {
+  font-size: 18px;
+}
+
+.movieRating {
+  background-color: black;
+  padding: 10px;
+  width: 40px;
+  color: orange;
+}
+
+.card-img-top {
+  transition: .2s ease;
+  position: relative;
+}
+
+.card-img-top:hover {
+  filter: blur(1.5px) brightness(20%);
+}
+
+.border-0 {
+  position: relative;
+}
+
+.card:hover .overlay {
+  display: block;
+}
+
+.card:hover .overlay~img {
+  filter: blur(1.5px) brightness(20%);
+}
+
+.overlay {
+  position: absolute;
+  margin: 20% auto;
+  z-index: 100;
+  font-size: 15px;
+  font-weight: bold;
+  color: beige;
+  display: none;
+  text-align: center;
+}
+
+#overView span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  line-height: 20px;
+  max-height: 300px;
+  -webkit-line-clamp: 5;
+  /* Write the number of 
+                              lines you want to be 
+                              displayed */
+  -webkit-box-orient: vertical;
+}

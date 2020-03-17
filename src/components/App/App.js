@@ -6,6 +6,10 @@ import { GameList } from '../GameList/gameList'
 import { Footer } from '../Footer/footer'
 import { MovieList } from '../MovieList/movieList'
 import { Pagination } from '../Pagination/pagination'
+import { Route } from 'react-router-dom'
+import { About } from '../About/about'
+import { Movie } from '../Movie/movie'
+
 const apiKey = '2b2be35c63bf3fe9e48a5ed70ef9a13d'
 class App extends React.Component {
 
@@ -14,6 +18,7 @@ class App extends React.Component {
     this.state = {
       trendingList: [],
       page: 1,
+      movie: {}
     }
     this.getTrending(this.state.page)
   }
@@ -28,7 +33,7 @@ class App extends React.Component {
       const page = this.state.page - 1
       this.getTrending(page)
     }
-    else { this.getTrending(Page) }
+    else { this.getTrending(parseInt(Page)) }
 
   }
 
@@ -50,18 +55,34 @@ class App extends React.Component {
     }
 
   }
+  getMovie = (movie) => {
+    this.setState({ movie: movie })
+  }
+
+  getList = (list) => {
+    this.setState({ trendingList: list.results, page: 1 })
+  }
   render() {
     return (
       <div className="App">
-        <Header search={this.getSearch} />
-        <div className="cont">
-          <MovieList trendingList={this.state.trendingList} />
-          <Pagination pageNumber={this.getPageNumber} />
-        </div>
+        <Header search={this.getSearch} getList={this.getList}/>
+        <Route exact path='/about' component={About} />
+        <Route exact path='/' render={() => {
+          return (
+            <div className="cont">
+              <MovieList trendingList={this.state.trendingList} getMovie={this.getMovie} />
+              <Pagination pageNumber={this.getPageNumber} page={this.state.page} />
+            </div>
+          )
+        }}
+        />
+        
+        <Route exact path="/movie/:id" render={() => (<Movie movie={this.state.movie} />)} />
         <footer className="py-5 text-white">
           <Footer />
         </footer>
       </div>
+
     )
   }
 

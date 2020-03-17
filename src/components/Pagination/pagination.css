@@ -1,0 +1,17 @@
+.page-item.active .page-link{
+  background-color: orange;
+  border-color: aliceblue;
+}
+
+.page-item .page-link{
+  background-color: #494F5C;
+  color: aliceblue;
+}
+
+.page-item.disabled .page-link{
+  background-color: #494F5C;
+}
+
+.page-item .page-link:hover {
+background-color: black;
+}
