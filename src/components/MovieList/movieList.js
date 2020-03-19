@@ -17,12 +17,12 @@ export class MovieList extends React.Component {
     fetch(`https://api.themoviedb.org/3/configuration?api_key=${apiKey}`)
       .then(resp => resp.json())
       .then(jsonresp => {
-        console.log(jsonresp)
+        
         this.setState({ base_url: jsonresp.images.base_url })
         this.setState({ img_size: jsonresp.images.backdrop_sizes[2] })
         base_url = this.state.base_url
         img_size = this.state.img_size
-        console.log(img_size, base_url)
+        
       })
   }
 
@@ -30,18 +30,17 @@ export class MovieList extends React.Component {
 
     return (
       <div>
-        {console.log(this.props.trendingList)}
+        
         <div className="row">
           {this.props.trendingList.map((movie, index) => {
             let url = `${this.state.base_url}${this.state.img_size}${movie.backdrop_path}`
-            if (!movie.backdrop_path) {
-              url = imgNotFound
-            }
+            if (movie.backdrop_path) {
+              // url = imgNotFound
             return (
               <div key={index} className="col-md-6 my-4 h-100">
                 <Link onClick={() => {
                   this.props.getMovie(movie)
-                }} to={`movie/${movie.id}`} className="card border border-dark rounded-lg text-white" href="#">
+                }} to={`/movie/${movie.id}`} className="card border border-dark rounded-lg text-white" href="#">
                   <div id="overView" className="overlay container" >
                     <span>
                       {movie.overview}
@@ -55,7 +54,7 @@ export class MovieList extends React.Component {
                 </Link>
               </div>
             )
-
+          }
 
           })}
 

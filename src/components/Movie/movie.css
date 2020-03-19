@@ -6,3 +6,27 @@
 background-color: #000000c2;
 
 }
+.modal-dialog{
+  margin: 5% 15%;
+}
+
+meter{
+  width: 20%;
+}
+
+meter::-webkit-meter-bar {
+  background: #FFF;
+}
+meter::-webkit-meter-optimum-value {
+  background: linear-gradient(to bottom, #62c462, #51a351);
+}
+meter::-webkit-meter-suboptimum-value {
+  background: linear-gradient(to bottom, #fbb450, #f89406);
+}
+meter::-webkit-meter-even-less-good-value {
+  background: linear-gradient(to bottom, #ee5f5b, #bd362f);
+}
+
+ul{
+  padding-inline-start: 0px ;
+}

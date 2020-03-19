@@ -1,16 +1,16 @@
 import React from 'react';
-import logo from './logo.svg';
+import { useParams } from 'react-router-dom'
 import './App.css';
+
 import { Header } from '../Header/header'
-import { GameList } from '../GameList/gameList'
 import { Footer } from '../Footer/footer'
 import { MovieList } from '../MovieList/movieList'
 import { Pagination } from '../Pagination/pagination'
 import { Route } from 'react-router-dom'
-import { About } from '../About/about'
 import { Movie } from '../Movie/movie'
 
 const apiKey = '2b2be35c63bf3fe9e48a5ed70ef9a13d'
+
 class App extends React.Component {
 
   constructor(props) {
@@ -53,6 +53,9 @@ class App extends React.Component {
           this.setState({ trendingList: jsonresp.results, page: 1 })
         })
     }
+    else{
+      this.getTrending(1)
+    }
 
   }
   getMovie = (movie) => {
@@ -62,11 +65,15 @@ class App extends React.Component {
   getList = (list) => {
     this.setState({ trendingList: list.results, page: 1 })
   }
+
+  child = () => {
+    let {id} = useParams()
+    return (<Movie movie={this.state.movie} movieId = {id}/>)
+  }
   render() {
     return (
       <div className="App">
         <Header search={this.getSearch} getList={this.getList}/>
-        <Route exact path='/about' component={About} />
         <Route exact path='/' render={() => {
           return (
             <div className="cont">
@@ -77,7 +84,16 @@ class App extends React.Component {
         }}
         />
         
-        <Route exact path="/movie/:id" render={() => (<Movie movie={this.state.movie} />)} />
+        <Route exact path="/movie/:id" children={<this.child />} />
+        <Route exact path="/category/:id" render={() => {
+          return (
+            <div className="cont">
+              <MovieList trendingList={this.state.trendingList} getMovie={this.getMovie} />
+            </div>
+          )
+        }}
+        
+        />
         <footer className="py-5 text-white">
           <Footer />
         </footer>

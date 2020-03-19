@@ -1,9 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import {NavItem} from '../NavItem/navItem'
-const logoo = './assets/img/logo.png'
-const search = './assets/img/icons8-search.svg'
-const api_logo = './assets/img/movieDb.svg'
+const logo = '/assets/img/loogo.png'
+const search = '/assets/img/icons8-search.svg'
+const api_logo = '/assets/img/movieDb.svg'
+const git_logo = '/assets/img/GitHub.png'
 
 const navItems = [
   {
@@ -45,7 +46,7 @@ export class Header extends React.Component {
         <nav className="navbar navbar-expand-lg navbar-dark shadow rounded sticky-top" style={{ backgroundColor: "#494F5C" }}>
           <div className="container-fluid">
             <a className="navbar-brand" href="/">
-              <img src={logoo} width="50" height="50" alt="" />
+              <img src={logo} width="50" height="50" alt="" />
             </a>
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span className="navbar-toggler-icon"></span>
@@ -53,7 +54,7 @@ export class Header extends React.Component {
 
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
               <ul className="navbar-nav mr-auto">
-                {navItems.map( item => <NavItem active={this.state.active} updateActive={this.updateActive} item={item} getList={this.props.getList} /> )}
+                {navItems.map( (item,index) => <NavItem key={index} active={this.state.active} updateActive={this.updateActive} item={item} getList={this.props.getList} /> )}
               </ul>
 
               <form className="form-inline my-2 my-lg-0 mx-5">
@@ -61,7 +62,11 @@ export class Header extends React.Component {
                 <button className="btn btn-outline-secondary my-2 my-sm-0 border-0" type="button" onClick={this.handleSubmit}><img src={search} /></button>
               </form>
 
-              <a href="https://www.themoviedb.org/documentation/api " >
+              <a href="https://github.com/MostafaFarag14/Movie-App.git" target="_blank" className="px-4">
+                <img src={git_logo}  height="40" width="40"/>
+              </a>
+
+              <a href="https://www.themoviedb.org/documentation/api " target="_blank">
                 <img src={api_logo} height="50" width="130"/>
               </a>
 

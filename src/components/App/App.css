@@ -29,6 +29,9 @@
   color: #61dafb;
 }
 
+html {
+  scroll-behavior: smooth;
+}
 
 .cont{
   width: 70%;

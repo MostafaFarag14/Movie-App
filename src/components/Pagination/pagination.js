@@ -1,9 +1,7 @@
 import React from 'react'
 import './pagination.css'
-import {Link} from 'react-router-dom'
+
 let pages = ['Prev', '1', '2', '3', '4','Next']
-// let cur_page = 1
-let expand= true
 export class Pagination extends React.Component {
   constructor(){
     super()
@@ -35,16 +33,16 @@ for (let index = 1; index < pages.length -1; index++) {
     return (
       <nav >
         <ul className="pagination justify-content-center">
-          {pages.map( page => {
+          {pages.map( (page, index) => {
             let classHold = 'page-item' ;
             if(parseInt(page) === this.state.cur_page){
               classHold = 'page-item active'
-              console.log(classHold)
+              
             }
             if (page === 'Prev' && this.state.cur_page === 1){
               classHold = 'page-item disabled'
             }
-            return(<li className={classHold}>
+            return(<li key={index} className={classHold}>
             <a className="page-link" href="#" onClick={this.handleClick}>{page}</a>
           </li>)
             
